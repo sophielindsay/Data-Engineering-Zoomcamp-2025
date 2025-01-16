@@ -1,0 +1,38 @@
+# Module 1 Homework: Docker & SQL
+
+In this homework we'll prepare the environment and practice
+Docker and SQL
+
+When submitting your homework, you will also need to include
+a link to your GitHub repository or other public code-hosting
+site.
+
+This repository should contain the code for solving the homework. 
+
+When your solution has SQL or shell commands and not code
+(e.g. python files) file formad, include them directly in
+the README file of your repository.
+
+## Question 1. Understanding docker first run 
+
+Run docker with the `python:3.12.8` image in an interactive mode, use the entrypoint `bash`.
+
+What's the version of `pip` in the image?
+
+- 24.3.1
+- 24.2.1
+- 23.3.1
+- 23.2.1
+
+### Solution
+1) Running docker with python:3.12.8 command with bash:
+```bash
+docker run -it --entrypoint=bash python:3.12.8
+
+``` 
+2) Finding the pip version:
+```bash
+pip --version
+
+``` 
+### Answer: **24.3.1**
