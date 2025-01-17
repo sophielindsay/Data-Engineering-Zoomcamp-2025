@@ -24,7 +24,7 @@ What's the version of `pip` in the image?
 - 23.3.1
 - 23.2.1
 
-### Solution
+### Commands
 1) Running docker with python:3.12.8 command with bash:
 ```bash
 docker run -it --entrypoint=bash python:3.12.8
@@ -119,6 +119,24 @@ Answers:
 - 104,793;  202,661;  109,603;  27,678;  35,189
 - 104,838;  199,013;  109,645;  27,688;  35,202
 
+### SQL Code
+```sql
+SELECT 
+    CASE
+		WHEN trip_distance <= 1 THEN '0-1 miles'
+        WHEN trip_distance >1 AND trip_distance <=3 THEN '1-3 miles'
+        WHEN trip_distance >3 AND trip_distance <=7 THEN '3-7 miles'
+		WHEN trip_distance >7 AND trip_distance <=10 THEN '7-10 miles'
+        ELSE 'Over 10 miles'
+    END AS distance,
+    COUNT(*) AS trip_count
+FROM green_taxi_data
+WHERE (lpep_pickup_datetime) >= '2019-10-1' 
+AND (lpep_dropoff_datetime) < '2019-11-1' 
+GROUP BY 1;
+
+``` 
+### Answer: 104,802; 198,924; 109,603; 27,678; 35,189
 
 ## Question 4. Longest trip for each day
 
@@ -132,6 +150,15 @@ Tip: For every day, we only care about one single trip with the longest distance
 - 2019-10-26
 - 2019-10-31
 
+### SQL Code:
+```sql
+SELECT date(lpep_pickup_datetime),trip_distance
+FROM green_taxi_data
+ORDER BY trip_distance DESC
+LIMIT 1;
+``` 
+
+### Answer: 2019-10-31
 
 ## Question 5. Three biggest pickup zones
 
@@ -145,6 +172,18 @@ Consider only `lpep_pickup_datetime` when filtering by date.
 - Morningside Heights, Astoria Park, East Harlem South
 - Bedford, East Harlem North, Astoria Park
 
+### SQL Code:
+```sql
+SELECT z."Zone", SUM(total_amount) AS total_sum
+FROM green_taxi_data g
+JOIN zones z ON g."PULocationID"  = z."LocationID"
+WHERE DATE(lpep_pickup_datetime) = '2019-10-18'
+GROUP BY z."Zone"
+HAVING SUM(total_amount) > 13000
+ORDER BY total_sum DESC;
+```
+
+### Answer: East Harlem North, East Harlem South, Morningside Heights
 
 ## Question 6. Largest tip
 
@@ -161,6 +200,21 @@ We need the name of the zone, not the ID.
 - East Harlem North
 - East Harlem South
 
+### SQL Code:
+```sql
+SELECT z2."Zone", MAX(tip_amount) AS largest_tip
+FROM green_taxi_data g
+JOIN zones z1 ON g."PULocationID"  = z1."LocationID"
+JOIN zones z2 ON g."DOLocationID"  = z2."LocationID"
+WHERE DATE(lpep_pickup_datetime) <= '2019-10-31'
+AND z1."Zone" = 'East Harlem North'
+GROUP BY z2."Zone"
+ORDER BY largest_tip DESC
+LIMIT 1;
+
+```
+
+### Answer: JFK Airport
 
 ## Terraform
 
