@@ -241,4 +241,8 @@ Answers:
 - terraform init, terraform apply -auto-approve, terraform destroy
 - terraform import, terraform apply -y, terraform rm
 
+### Answer: terraform init, terraform apply -auto-approve, terraform destroy
+
+
+
 
