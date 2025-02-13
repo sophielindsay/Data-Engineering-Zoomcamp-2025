@@ -16,6 +16,7 @@ https://us-central1-dlthub-analytics.cloudfunctions.net/data_engineering_zoomcam
 🔹 **Data format:** Paginated JSON (1,000 records per page).  
 🔹 **API Pagination:** Stop when an empty page is returned.
 
+### Note: All work for the DLT homework is documented in https://github.com/sophielindsay/Data-Engineering-Zoomcamp-2025/blob/main/DLT/DLT_Workshop_Homework.ipynb
 ## **Question 1: dlt Version**
 
 1. **Install dlt**:
@@ -40,6 +41,8 @@ print("dlt version:", dlt.__version__)
 ```
 
 Provide the **version** you see in the output.
+
+### Solution: 1.6.1
 
 ## **Question 2: Define & Run the Pipeline (NYC Taxi API)**
 
@@ -101,6 +104,8 @@ How many tables were created?
 * 6
 * 8
 
+### Solution: 4
+
 ## **Question 3: Explore the loaded data**
 
 Inspect the table `ride`:
@@ -116,6 +121,8 @@ What is the total number of records extracted?
 * 5000
 * 7500
 * 10000
+
+### Solution: 10,000
 
 ## **Question 4: Trip Duration Analysis**
 
@@ -142,6 +149,8 @@ What is the average trip duration?
 * 22.3049
 * 32.3049
 * 42.3049
+
+### Solution: 12.3049
 
 ## **Submitting the solutions**
 
