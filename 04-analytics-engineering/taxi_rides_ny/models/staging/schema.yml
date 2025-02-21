@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: staging
-    database: "{{ env_var('DBT_DATABASE', 'taxi-rides-ny-339813-412521') }}"
+    database: "{{ env_var('DBT_DATABASE', 'woven-catwalk-447100-j8') }}"
     schema: "{{ env_var('DBT_SCHEMA', 'trips_data_all') }}"
       # loaded_at_field: record_loaded_at
     tables:
@@ -40,14 +40,14 @@ models:
             description: The number of passengers in the vehicle. This is a driver-entered value.
           - name: Trip_distance 
             description: The elapsed trip distance in miles reported by the taximeter.
-          - name: Pickup_locationid
+          - name: Pickup_location_id
             description: locationid where the meter was engaged.
             tests:
               - relationships:
                   to: ref('taxi_zone_lookup')
                   field: locationid
                   severity: warn
-          - name: dropoff_locationid 
+          - name: dropoff_location_id 
             description: locationid where the meter was engaged.
             tests:
               - relationships:
@@ -131,14 +131,14 @@ models:
             description: The number of passengers in the vehicle. This is a driver-entered value.
           - name: Trip_distance 
             description: The elapsed trip distance in miles reported by the taximeter.
-          - name: Pickup_locationid
+          - name: Pickup_location_id
             description: locationid where the meter was engaged.
             tests:
               - relationships:
                   to: ref('taxi_zone_lookup')
                   field: locationid
                   severity: warn
-          - name: dropoff_locationid 
+          - name: dropoff_location_id 
             description: locationid where the meter was engaged.
             tests:
               - relationships:
