@@ -8,7 +8,7 @@ For this homework we will be using the Yellow 2024-10 data from the official web
 wget https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-10.parquet
 ```
 
-### Work shown in homework_05.ipynb
+### Work shown in https://github.com/sophielindsay/Data-Engineering-Zoomcamp-2025/blob/main/05-batch/homework_05.ipynb
 
 ## Question 1: Install Spark and PySpark
 
